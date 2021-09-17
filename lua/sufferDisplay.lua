@@ -1,4 +1,4 @@
 return function()
-  vim.g.sufferval = vim.g.sufferval + 1
-  return vim.g.sufferval
+  vim.g.SufferList = table.concat(vim.api.nvim_list_bufs(), ',')
+  return vim.g.SufferList
 end
