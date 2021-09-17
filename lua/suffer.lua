@@ -1,21 +1,11 @@
--- we can print to tabline
--- we know supplyed function is called alot
-
 ---------------------------------
 -- main goal UGLY but HACKABLE --
 ---------------------------------
 
--- TODO: define a state
-  -- list buffers
-  -- order buffer
-  -- find out whats going on with each buffer ie: not written? lsp error?
-
--- TODO: display state
-  -- print buffers
-  -- print attribs
-
--- TODO: modify state
-  -- keep track of changes
+-- TODO: add overwritable filter function
+-- TODO: add overwritable display_item function
+-- TODO: add overwritable separator
+-- TODO: clean up code a bit
 
 local module = {}
 module.display = require'sufferDisplay'

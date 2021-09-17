@@ -4,9 +4,7 @@ return function()
 
   for i, bufnum in ipairs(bufferTable) do
     if vim.api.nvim_buf_is_loaded(bufnum) and vim.api.nvim_buf_is_loaded(bufnum) then
-      if vim.api.nvim_buf_get_name(bufnum) or vim.api.nvim_buf_get_name(bufnum) == '' then
-        table.insert(SufferList, vim.api.nvim_buf_get_name(bufnum))
-      end
+      table.insert(SufferList, vim.api.nvim_buf_get_name(bufnum))
     end
   end
 
