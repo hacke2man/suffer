@@ -3,10 +3,12 @@ return function()
   local SufferList = {}
 
   for i, bufnum in ipairs(bufferTable) do
-    if vim.api.nvim_exec("echo SufferFilter(".. bufnum .. ")", true) == "v:true" then
+    if vim.fn.buflisted(bufnum) == 1 then
       table.insert(SufferList, vim.api.nvim_exec("echo SufferDisplay(".. bufnum .. ")", true))
     end
   end
 
-  return table.concat(SufferList, vim.g.SufferSeperator)
+  local line = table.concat(SufferList, vim.g.SufferSeperator)
+
+  return vim.g.SufferStart .. line .. vim.g.SufferEnd
 end
