@@ -9,6 +9,7 @@ use {
   config = function()
     require"suffer".setup()
   end
+}
 ```
 
 ## Configuration
