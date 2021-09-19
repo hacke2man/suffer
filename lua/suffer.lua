@@ -1,43 +1,26 @@
--- TODO: clean up code a bit
+local line_start, line_end, separator, display
+local module = {}
 
 function Suffer_run()
-  local bufferTable = vim.api.nvim_list_bufs()
-  local SufferList = {}
+  local bufnum_list = vim.api.nvim_list_bufs()
+  local buffer_display_list = {}
 
-  for i, bufnum in ipairs(bufferTable) do
+  for _, bufnum in ipairs(bufnum_list) do
     if vim.fn.buflisted(bufnum) == 1 then
-      table.insert(SufferList, vim.api.nvim_exec("echo suffer_display(".. bufnum .. ")", true))
+      table.insert(buffer_display_list, display(bufnum))
     end
   end
 
-  local line = table.concat(SufferList, vim.g.SufferSeperator)
+  local line = table.concat(buffer_display_list, separator)
 
-  return vim.g.suffer_line_start .. line .. vim.g.suffer_line_end
+  return line_start .. line .. line_end
 end
 
-local Suffer_defaults = {
-  display = function(bufnum) return vim.api.nvim_buf_get_name(bufnum) end,
-  seperator = ' ',
-  line_start = ' ',
-  line_end = ' '
-}
-
-local module = {}
 module.setup = function(setup_input)
-  local setup_table = Suffer_defaults
-
-  if setup_input then
-    if setup_input.display then setup_table.display = setup_input.display end
-    if setup_input.seperator then setup_table.seperator = setup_input.seperator end
-    if setup_input.line_start then setup_table.line_start = setup_input.line_start end
-    if setup_input.line_end then setup_table.line_end = setup_input.line_end end
-  end
-
-  vim.g.suffer_display = setup_table.display
-  vim.g.suffer_filter = setup_table.filter
-  vim.g.suffer_seperator = setup_table.seperator
-  vim.g.suffer_line_start = setup_table.line_start
-  vim.g.suffer_line_end = setup_table.line_end
+  display = setup_input.display or function(bufnum) return vim.api.nvim_buf_get_name(bufnum) end
+  separator = setup_input.separator or ' '
+  line_start = setup_input.line_start or ' '
+  line_end = setup_input.line_end or ' '
   vim.g.suffer_run = Suffer_run
   vim.o.tabline = "%!suffer_run()"
 end
