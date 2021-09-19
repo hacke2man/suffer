@@ -8,7 +8,7 @@ use {
   "r1ri/suffer",
   config = function()
     require"suffer".setup()
-    vim.o.showtabline=2
+    vim.o.showtabline = 2
   end
 }
 ```
