@@ -1,28 +1,15 @@
-return function(setupDict)
-  if setupDict then
-    if setupDict.display then
-      vim.g.SufferDisplay = setupDict.display
-    else
-      vim.g.SufferDisplay = require"sufferDisplay"
-    end
+return function(setupInput)
+  local setupDict = require"sufferDefaults"
 
-    if setupDict.filter then
-      vim.g.SufferDisplay = setupDict.filter
-    else
-      vim.g.SufferFilter = require"sufferFilter"
-    end
-
-    if setupDict.seperator then
-      vim.g.SufferSeperator = setupDict.seperator
-    else
-      vim.g.SufferSeperator = ' '
-    end
-    else
-      vim.g.SufferDisplay = require"sufferDisplay"
-      vim.g.SufferFilter = require"sufferFilter"
-      vim.g.SufferSeperator = ' '
+  if setupInput then
+    if setupInput.display then setupDict.display = setupInput.display end
+    if setupInput.filter then setupDict.filter = setupInput.filter end
+    if setupInput.seperator then setupDict.seperator = setupInput.seperator end
   end
 
+  vim.g.SufferDisplay = setupDict.display
+  vim.g.SufferFilter = setupDict.filter
+  vim.g.SufferSeperator = setupDict.seperator
   vim.g.SufferRun = require"sufferRun"
   vim.o.tabline = "%!SufferRun()"
 end
