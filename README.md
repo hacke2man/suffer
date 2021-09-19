@@ -1,7 +1,7 @@
-#Suffer
+# Suffer
 Suffer is a simple bufferline, that in about 40 lines of lua, provides you with a display function that's ment to be overwritten.
 
-##Installation
+## Installation
 
 ```lua
 use {
@@ -11,7 +11,7 @@ use {
   end
 ```
 
-##Configuration
+## Configuration
 this is the default configuration
 
 ```lua
@@ -23,7 +23,7 @@ require"suffer"({
 })
 ```
 
-##Screenshots
+## Screenshots
 
 My config:
 ![MYCONFIG](screenshots/my_config.png)
@@ -31,7 +31,7 @@ My config:
 Default config:
 ![DEFAULTCONFIG](screenshots/default_config.png)
 
-##My Config
+## My Config
 
 ```lua
 require'suffer'.setup({
