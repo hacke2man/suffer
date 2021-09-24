@@ -1,5 +1,5 @@
 # Suffer
-Suffer is a simple bufferline plugin. In less then 30 lines of lua, Suffer provides you with a display function that's ment to be overwritten.
+Suffer is a simple bufferline plugin, in less the 30 lines of lua it provides a display function meant to be overwritten.
 
 ## Installation
 
