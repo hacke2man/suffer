@@ -17,7 +17,7 @@ use {
 this is the default configuration
 
 ```lua
-require"suffer"({
+require"suffer".setup({
   display = function(bufnum) return vim.api.nvim_buf_get_name(bufnum) end,
   seperator = ' ',
   line_start = ' ',
