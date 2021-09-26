@@ -14,11 +14,11 @@ local function suffer_run()
   return line_start .. table.concat(buffer_display_list, separator) .. line_end
 end
 
-display = function(bufnum) return vim.api.nvim_buf_get_name(bufnum) end
+local function def_display(bufnum) return vim.api.nvim_buf_get_name(bufnum) end
 
 module.setup = function(setup_input)
   setup_input = setup_input or {}
-  display = setup_input.display or display
+  display = setup_input.display or def_display
   separator = setup_input.separator or ' '
   line_start = setup_input.line_start or ' '
   line_end = setup_input.line_end or ' '
